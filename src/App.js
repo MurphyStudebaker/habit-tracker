@@ -1,12 +1,57 @@
 import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <p>Habit Tracker</p>
-      <button className="btn btn-primary">Click Me</button>
-    </div>
-  );
+/** import components */
+import Habit from './components/Habit'
+import NewHabitModal from './components/NewHabitModal'
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      habits: [
+      ]
+    }
+
+    this.handleCheckboxClick = this.handleCheckboxClick.bind(this)
+    this.addHabit = this.addHabit.bind(this)
+  }
+
+
+  handleCheckboxClick(habitName, index) {
+    var habitIndex = this.state.habits.findIndex(
+      h => h.habitName === habitName
+    )
+    let updatedHabit = this.state.habits[habitIndex]
+    updatedHabit.days[index] = !updatedHabit.days[index]
+    let newHabits = [...this.state.habits.slice(0, habitIndex), updatedHabit, ...this.state.habits.slice(habitIndex +1)]
+    this.setState({
+        habits: newHabits
+    })
+  }
+
+  addHabit(habitName) {
+    let newHabit = {habitName: habitName, days: [false,false,false,false,false,false,false]}
+    this.setState({
+      habits: [...this.state.habits, newHabit]
+    })
+  }
+
+  render() {
+    return (
+      <div className="App container">
+        <h1 className="mt-5">Habit Tracker</h1>
+        <div className="habits mt-5">
+          { this.state.habits.length < 1 ?
+            (<p> You don't have any habits yet! </p>) : (
+            this.state.habits.map(
+            habit => <Habit habitName={habit.habitName} days={habit.days} handleClick={this.handleCheckboxClick}/>
+          ))}
+        </div>
+        <button type="button" className="btn btn-outline-primary mt-3" data-toggle="modal" data-target="#newHabitModal">+</button>
+        <NewHabitModal handleClick={this.addHabit}/>
+      </div>
+    );
+  }
 }
 
 export default App;
