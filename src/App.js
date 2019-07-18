@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ls from 'local-storage'
+
 /** import components */
 import Habit from './components/Habit'
 import NewHabitModal from './components/NewHabitModal'
@@ -16,6 +18,11 @@ class App extends React.Component {
     this.addHabit = this.addHabit.bind(this)
   }
 
+  componentDidMount() {
+    this.setState({
+      habits : ls.get('habits') || [],
+    })
+  }
 
   handleCheckboxClick(habitName, index) {
     var habitIndex = this.state.habits.findIndex(
@@ -27,13 +34,16 @@ class App extends React.Component {
     this.setState({
         habits: newHabits
     })
+    ls.set('habits', newHabits)
   }
 
   addHabit(habitName) {
     let newHabit = {habitName: habitName, days: [false,false,false,false,false,false,false]}
+    let newHabits = [...this.state.habits, newHabit]
     this.setState({
-      habits: [...this.state.habits, newHabit]
+      habits: newHabits
     })
+    ls.set('habits',newHabits)
   }
 
   render() {
