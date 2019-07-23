@@ -18,12 +18,16 @@ export default class Habit extends React.Component {
 
     render() {
         return (
-            <div className="row flex-middle flex-edge">
+            <div className="habit row flex-middle flex-edges border">
                 <div className="col">
-                    <button onClick={this.deleteHabit}>X</button>
-                </div>
-                <div className="col">
-                    <h3 className="">{this.props.habitName}</h3>
+                    <div className="row">
+                        <div className="col">
+                            <button className="delete-habit" onClick={this.deleteHabit}>X</button>
+                        </div>
+                        <div className="col">
+                            <h3 className="margin-none">{this.props.habitName}</h3>
+                        </div>
+                    </div>
                 </div>
                 <div className="col">
                     {this.props.days.map(

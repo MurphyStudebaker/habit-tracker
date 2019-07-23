@@ -5,7 +5,9 @@ import * as serviceWorker from './serviceWorker';
 
 //import 'bootstrap/dist/css/bootstrap.css';
 //import 'bootstrap/dist/js/bootstrap.js';
+
 import 'papercss/dist/paper.css'
+import './styles/custom.css'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

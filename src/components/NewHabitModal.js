@@ -30,7 +30,7 @@ export default class NewHabitModal extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label className="col-form-label">
-                    New Habit:
+                    What do you want to do?
                   </label>
                   <input className="form-control" type="text" placeholder="Eat Veggies" value={this.state.value} onChange={this.handleChange} />
                 </div>

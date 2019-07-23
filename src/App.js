@@ -55,9 +55,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App container">
-        <h1 className="margin-bottom-none">Eat Your Veggies</h1>
-        <h3 className="margin-top-none">A Habit Tracker</h3>
-        <div className="habits mt-5">
+        <h1 className="margin-bottom-none title">Eat Your Veggies</h1>
+        <h3 className="margin-top-none">A Weekly Habit Tracker</h3>
+        <div className="habits margin-bottom-small padding-bottom-small">
           { this.state.habits.length < 1 ?
             (<p> You don't have any habits yet! </p>) : (
             this.state.habits.map(
@@ -65,6 +65,7 @@ class App extends React.Component {
           ))}
         </div>
         <NewHabitModal handleClick={this.addHabit}/>
+        <p>This App was made by Murphy Studebaker using PaperCSS and React. Read more about habit formation here. </p>
       </div>
     );
   }

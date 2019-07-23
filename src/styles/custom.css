@@ -1,0 +1,21 @@
+html {
+    color: #421630;
+}
+
+body {
+    background-color: #db9fc2;
+}
+
+.paper-btn, button, .habit {
+    background-color: white !important;
+}
+
+.delete-habit {
+    border: none;
+}
+
+.delete-habit:hover {
+    box-shadow: none;
+}
+
+

@@ -25,11 +25,13 @@ export default class Checkbox extends React.Component {
     
     render () {
         const selectedStyle = {
-            backgroundColor: "green"
+            backgroundColor: "#421630"
         }
 
         const defaultStyle = {
-            backgroundColor: "blue"
+            backgroundColor: "white",
+            border: "2px solid  #421630",
+            color: "#421630"
         }
 
         return (
