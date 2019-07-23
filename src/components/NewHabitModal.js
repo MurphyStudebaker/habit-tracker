@@ -19,30 +19,24 @@ export default class NewHabitModal extends React.Component {
   
     render() {
       return (
-        <div className="modal fade" id="newHabitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog" role="document">
-        <div className="modal-content">
-            <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">Add a New Habit</h5>
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-        <div className="modal-body">
+       <div>
+          <label class="paper-btn margin" for="modal-1">Add a Habit</label>
+        <input class="modal-state" id="modal-1" type="checkbox"/>
+        <div class="modal">
+          <label class="modal-bg" for="modal-1"></label>
+          <div class="modal-body">
+            <label class="btn-close" for="modal-1">X</label>
+            <h4 class="modal-title">Add a Habit</h4>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label className="col-form-label">
-                        New Habit:
-                    </label>
-                    <input className="form-control" type="text" value={this.state.value} onChange={this.handleChange} />
+                  <label className="col-form-label">
+                    New Habit:
+                  </label>
+                  <input className="form-control" type="text" placeholder="Eat Veggies" value={this.state.value} onChange={this.handleChange} />
                 </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" onClick={this.addHabit} data-dismiss="modal">Add Habit</button>
-        </div>
-        </div>
+            </form>    
+            <label onClick={this.addHabit} for="modal-1" className="paper-btn">Make it Happen!</label>
+          </div>
         </div>
         </div>
       );

@@ -9,6 +9,19 @@ export default class Checkbox extends React.Component {
     handleClick() {
         this.props.handleClick(this.props.habit, this.props.index)
     }
+
+    getDayOfWeek() {
+        let day = "something"
+        switch(this.props.index) {
+            case 0: day = "M"; break;
+            case 1: day = "T"; break;
+            case 2: day = "W"; break;
+            case 3: day = "T"; break;
+            case 4: day = "F"; break;
+            default: day = "S"; 
+        }
+        return day
+    }
     
     render () {
         const selectedStyle = {
@@ -20,9 +33,9 @@ export default class Checkbox extends React.Component {
         }
 
         return (
-            <div onClick={this.handleClick} className="badge badge-light p-3 mb-3 ml-1" style={this.props.selected ? selectedStyle : defaultStyle}>
-                {" "}
-            </div>
+            <span onClick={this.handleClick} className="badge padding-small margin-small" style={this.props.selected ? selectedStyle : defaultStyle}>
+                {this.getDayOfWeek()}
+            </span>
         )
     }
 }    

@@ -16,6 +16,7 @@ class App extends React.Component {
 
     this.handleCheckboxClick = this.handleCheckboxClick.bind(this)
     this.addHabit = this.addHabit.bind(this)
+    this.deleteHabit = this.deleteHabit.bind(this)
   }
 
   componentDidMount() {
@@ -46,22 +47,29 @@ class App extends React.Component {
     ls.set('habits',newHabits)
   }
 
+  deleteHabit(index) {
+    let newHabits = [...this.state.habits.slice(0, index), ...this.state.habits.slice(index +1)]
+    this.setState({habits: newHabits})
+  }
+
   render() {
     return (
       <div className="App container">
-        <h1 className="mt-5">Habit Tracker</h1>
+        <h1 className="margin-bottom-none">Eat Your Veggies</h1>
+        <h3 className="margin-top-none">A Habit Tracker</h3>
         <div className="habits mt-5">
           { this.state.habits.length < 1 ?
             (<p> You don't have any habits yet! </p>) : (
             this.state.habits.map(
-            habit => <Habit habitName={habit.habitName} days={habit.days} handleClick={this.handleCheckboxClick}/>
+            (habit, i) => <Habit habitName={habit.habitName} days={habit.days} handleClick={this.handleCheckboxClick} index={i} deleteHabit={this.deleteHabit}/>
           ))}
         </div>
-        <button type="button" className="btn btn-outline-primary mt-3" data-toggle="modal" data-target="#newHabitModal">+</button>
         <NewHabitModal handleClick={this.addHabit}/>
       </div>
     );
   }
 }
+
+
 
 export default App;
